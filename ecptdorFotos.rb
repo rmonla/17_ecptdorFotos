@@ -33,6 +33,7 @@ class EcptdorFotos
 	def lstDirs(dir)
 		Dir.glob("#{dir}/*").select { |f| File.ftype(f) == "directory" }
 	end
+	
 	def log(msg)
 		t = Time.now.strftime("%F_%H:%M:%S")
 		puts "#{t}  #{msg}"
@@ -87,17 +88,14 @@ class EcptdorFotos
 
 end
 
-dori = '/home/ftp'
-ddst = '/home/samba/ditic/cams'
+dori = '_prus/ori1'
+ddst = '_prus/dst1'
 
 o = EcptdorFotos.new(dori, ddst)
 o.moverArchivos
 o.compriDirs
 
 
-# ddst = '/home/rmonla/Documentos/rmDocs/Scripts/prus/camsReorgDst'
-# dori = '/home/rmonla/Documentos/rmDocs/Scripts/prus/dori'
-# ddst = '/home/rmonla/Documentos/rmDocs/Scripts/prus/ddst'
-# o.compriTmp
-# o.compriSubDir("/home/samba/ditic/cams/tmp/camguardia/2016-05-03/")
+# dori = '/home/ftp'
+# ddst = '/home/samba/ditic/cams'
 
