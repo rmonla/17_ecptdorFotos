@@ -21,31 +21,35 @@ class EcptdorFotos
 	attr_accessor :dori
 	attr_accessor :ddst
 
-	def initialize(dori, ddst)
+	def initialize dori, ddst
 		@dori = File.absolute_path(dori)
 		@ddst = File.absolute_path(ddst)
 	end
 	
-	def lstArchs(dir)
+	# Retorna los Archivos de un directorio.
+	def lstArchs dir
 		Dir.glob("#{dir}/*").select { |f| File.ftype(f) == "file" }
 	end
 	
-	def lstDirs(dir)
+	# Retorna los Directorios de un directorio.
+	def lstDirs dir
 		Dir.glob("#{dir}/*").select { |f| File.ftype(f) == "directory" }
 	end
 	
-	def log(msg)
+	# Muestra un mensaje por pantalla con la marca de tiempo. 
+	def log msg
 		t = Time.now.strftime("%F_%H:%M:%S")
 		puts "#{t}  #{msg}"
 	end
 	
-	def subDir(pth)
+	# 
+	def subDir pth
 		pth = "#{@ddst}/#{pth}"
 		FileUtils.mkdir_p(pth) if !Dir.exist?(pth)
 		pth
 	end
 	
-	def moverArchivos()
+	def moverArchivos
 		n = 0
 		for d in lstDirs( @dori )
 			for f in lstArchs( d )
@@ -61,7 +65,7 @@ class EcptdorFotos
 		 log("Reorganizados => #{n} archivos.") if n > 0
 	end
 	
-	def lstDirsComp()
+	def lstDirsComp
 		lstPs = []
 		lstFs = Dir.glob("#{@ddst}/**/*.jpg").sort
 		lstFs.each do |f|
@@ -73,7 +77,7 @@ class EcptdorFotos
 		lstPs.sort
 	end
 	
-	def compriDirs()
+	def compriDirs
 		for d in lstDirsComp()
 			Dir.chdir(d)
 			for dcomp in Dir.glob("*").sort.select { |f| File.ftype(f) == "directory" }
@@ -91,8 +95,10 @@ end
 dori = '_prus/ori1'
 ddst = '_prus/dst1'
 
-o = EcptdorFotos.new(dori, ddst)
+o = EcptdorFotos.new dori, ddst 
+
 o.moverArchivos
+
 o.compriDirs
 
 
