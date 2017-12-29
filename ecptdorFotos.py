@@ -1,12 +1,27 @@
 from os import listdir, getcwd
-from os.path import isfile, join
+from os.path import isdir, isfile, join
 import re
 
-def lstRe( pth = getcwd() ):
-	lst = [arch for arch in listdir(pth) if isfile(join(pth, arch))]
-	regex=re.compile(".*(IMG-).*")
-	print [m.group(0) for l in lst for m in [regex.search(l)] if m]
-	
+def lstRgx( 
+    pth = getcwd(), # String del Path donde se realiza la búsqueda.
+    rgx = ""        # String con los comodines regex (Ej: ".*(IMG-).*").
+    ):
+    lst = [a for a in listdir(pth) if isfile(join(pth, a))]
+    if not rgx == "":
+        rgx = re.compile( rgx )
+        lst = [m.group(0) for l in lst for m in [rgx.search(l)] if m]
+    return lst
+
+# print lstRgx('.', ".*(IP).*")
+
+from os import walk, getcwd
+from os.path import abspath
+
+def ls(pth = getcwd()):
+    lstA = []
+    for (_, _, a) in walk(pth):
+        lstA.extend(a) 
+    return lstA
 
 
 
@@ -21,11 +36,12 @@ def ls(ruta = '.'):
 
 from os import walk, getcwd
 
-def ls(ruta = getcwd()):
+def ls(pth = getcwd()):
     listaarchivos = []
-    for (_, _, archivos) in walk(ruta):
+    for (_, _, archivos) in walk(pth):
         listaarchivos.extend(archivos)
     return listaarchivos
+    
 
 list=['a cat','a dog','a yacht','cats']
 
