@@ -3,7 +3,7 @@
 
 __aut__  = "<®>Copyright (c) 2017 Ricardo N. MONLA (rmonla@gmail.com)<®>"
 __fmod__ = "2018-01-14"
-__ver__  = "2.0.7"
+__ver__  = "2.0.8"
 
 """
 /*<®> Encarpetador de Fotos <®>*/
@@ -47,24 +47,24 @@ def lstRgx(
 import rmArgs
 
 # /*<®> Funciones <®>*/
-import rmFxs
+from rmFxs import rmMsg
 
 
 
-if __name__ == "__main__":
-  if '-h' in sys.argv or '--help' in sys.argv: 
-    msj(como_se_usa, 1)
+# if __name__ == "__main__":
+#   if '-h' in sys.argv or '--help' in sys.argv: 
+#     msj(como_se_usa, 1)
       
-  if "--version" in sys.argv: 
-    msj(version, 1)
+#   if "--version" in sys.argv: 
+#     msj(version, 1)
 
 
-#*<®> AutoRun <®>*
-if not opts.idytb:
-  msj('No se puede iniciar sin un ID')
-  msj(como_se_usa, 1)
-else:
-  radioTube()
+# #*<®> AutoRun <®>*
+# if not opts.idytb:
+#   msj('No se puede iniciar sin un ID')
+#   msj(como_se_usa, 1)
+# else:
+#   radioTube()
 
 
-msj('FIN DEL PROGRAMA', 1)
+rmMsj('FIN DEL PROGRAMA', 1)

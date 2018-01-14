@@ -17,7 +17,7 @@ __ver__  = "2.0.1"
 
 import sys
 
-def msj(
+def rmMsj(
   msj='',   # {str} [""]   Mensaje de salida.
   exit=None # {bol} [None] Sale del programa si es true.
   ):
@@ -26,5 +26,8 @@ def msj(
   """ + msj + """
 
   """
-  if exit: sys.exit()
+  if exit: 
+    rmMsj(__aut__)
+    sys.exit()
   
+# rmMsj("CHAUUUUUUUU", 1)
