@@ -7,13 +7,6 @@
     Script que desde una carpeta lee los archivos de imágenes y
     las mueve a otro destino ordenado según fecha.
   
-  /*<®> Requerimientos <®>*/
-    Este proyecto para funcionar nesecita 
-    tener instalado los siguientes módulos de python:
-       **youtube_dl** para la descarga de youtube.
-          --> sudo pip install --upgrade youtube_dl
-    además el script de ejemplo descargado desde las google apis para youtube
-
   /*<®> Items relizados y pendientes <®>*/
     [x] Genera una URL desde un ID de video de YouTube.
     [x] Descargar el html en un archivo temporal desde una URL.
@@ -26,7 +19,7 @@
 """
 
 __proy__ = "ecptdorFotos.py"
-__ver__  = "1.0.5"
+__ver__  = "2.0.4"
 
 como_se_usa = """\
 
