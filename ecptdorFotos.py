@@ -8,18 +8,16 @@
     las mueve a otro destino ordenado según fecha.
   
   /*<®> Items relizados y pendientes <®>*/
-    [x] Genera una URL desde un ID de video de YouTube.
-    [x] Descargar el html en un archivo temporal desde una URL.
-    [ ] Genera una lista de URLS de los videos mas vistos.
-    [ ] Descargar solo el audio de un video YouTube.
-    [ ] Reproduce los audios de la lista.
+    [x] fx 'lstRgx' Retorna una lista de directorios o archivos 
+        de un path dado y pudiendo utilizar comodines Regex.
+    [ ] fx que genere una string para mostrar un msj como_se_usa.
 
 
   /*<®> Copyright (c) 2017 Ricardo MONLA (rmonla@gmail.com) <®>*/
 """
 
 __proy__ = "ecptdorFotos.py"
-__ver__  = "2.0.4"
+__ver__  = "2.0.5"
 
 como_se_usa = """\
 
