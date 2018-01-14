@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+__proy__ = "ecptdorFotos.py"
+__ver__  = "2.0.6"
+
 """
 /*<®> Encarpetador de Fotos <®>*/
   /*<®> Descripción <®>*/
@@ -10,14 +13,16 @@
   /*<®> Items relizados y pendientes <®>*/
     [x] fx 'lstRgx' Retorna una lista de directorios o archivos 
         de un path dado y pudiendo utilizar comodines Regex.
+    [ ] fx que genere el adminstrador de parámetros.
     [ ] fx que genere una string para mostrar un msj como_se_usa.
 
 
   /*<®> Copyright (c) 2017 Ricardo MONLA (rmonla@gmail.com) <®>*/
 """
 
-__proy__ = "ecptdorFotos.py"
-__ver__  = "2.0.5"
+
+
+
 
 como_se_usa = """\
 
@@ -46,13 +51,11 @@ from os.path import isdir, isfile, join
 import re
 
 def lstRgx(
-    tpo = "d", 
-    pth = getcwd(), 
-    rgx = ""
+    tpo = "d",      # Tipo de búsqueda f-> Archivos, d-> Directorios.
+    pth = getcwd(), # 
+    
+    rgx = ""        # String con los comodines regex (Ej: ".*(IMG-).*").
     ):
-    # Tipo de búsqueda f-> Archivos, d-> Directorios.
-    # String del Path donde se realiza la búsqueda.
-    # # String con los comodines regex (Ej: ".*(IMG-).*").
     
     lst = [d for d in listdir(pth) if isdir(join(pth, d))]
     if tpo != "d":
@@ -64,3 +67,43 @@ def lstRgx(
 
 # print lstRgx('f', .', ".*(IP).*")
 # print lstRgx()
+
+# /*<®> Parametrisación <®>*/
+def rmParams():
+  aPrmtros = [
+    ("-h", "help",     "help"   ),
+    ("-v", "version",  "version"),
+    ("-t", "tipobusc", "tpo"    ),
+    ("-p", "path",     "pth"    ),
+    ("-r", "regex",    "rgx"    )
+  ]
+  
+
+
+
+if __name__ == "__main__":
+  if '-h' in sys.argv or '--help' in sys.argv: 
+    msj(como_se_usa, 1)
+      
+  if "--version" in sys.argv: 
+    msj(version, 1)
+
+  from optparse import OptionParser
+  prmtros = OptionParser()
+  prmtros.add_option("-i", "--idytb", dest="idytb")
+  prmtros.add_option("-o", "--output", dest="output")
+  prmtros.add_option("-u", "--url",    dest="url")
+  prmtros.add_option("-t", "--ytb_tit", dest="ytb_tit")
+  prmtros.add_option(      "--fnom",   dest="fnom") #Solo uso interno.
+  (opts, args) = prmtros.parse_args()
+  # parser.add_option("-f", "--fnom",  dest="fnom") #Solo uso interno.
+
+#*<®> AutoRun <®>*
+if not opts.idytb:
+  msj('No se puede iniciar sin un ID')
+  msj(como_se_usa, 1)
+else:
+  radioTube()
+
+
+msj('FIN DEL PROGRAMA', 1)
