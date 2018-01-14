@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 __aut__  = "<®>Ricardo N. MONLA (rmonla@gmail.com)<®>"
+__fmod__ = "2018-01-14"
 __ver__  = "1.0.1"
 
 """
